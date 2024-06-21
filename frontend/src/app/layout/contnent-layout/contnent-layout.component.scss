@@ -1,0 +1,21 @@
+.pageLayout {
+    display: flex;
+  }
+  .sidebar {
+    flex-basis: 300px;
+    flex-shrink: 0;
+    transition: all 0.4s ease;
+    background-color: #fff;
+    min-height: 100vh;
+  }
+  
+  .right-section {
+    flex-grow: 1;
+    // width: calc(100% - 300px);
+    // flex-grow: 1 ;
+    background: #f7f9fbfc;
+    padding: 0 20px;
+  }
+  .half-show-sidebar .sidebar {
+    flex-basis: 90px;
+  }

@@ -1,0 +1,14 @@
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin: 20px;
+  }
+  
+  mat-card {
+    width: 45%;
+    margin: 20px;
+  }
+  mat-toolbar{
+    margin-top: 1rem;
+  }

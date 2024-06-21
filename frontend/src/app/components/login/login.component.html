@@ -1,0 +1,49 @@
+<section class="loginWrapper">
+    <div class="loginForm">
+      <div class="textCenter headingWrap">
+        <h1 class="loginHeading">Hi, Welcome Back</h1>
+        <p class="text">Enter your credentials to continue</p>
+      </div>
+      <div class="formContainer">
+        <form [formGroup]="loginForm">
+          <div class="formRow">
+            <label class="label" for="email">Email</label>
+            <input type="text" placeholder="email" formControlName="email"/>
+            <div *ngIf="submitted && f['email'].errors && !(f['password'].errors) " class=" text-left">
+              <div *ngIf="f['email'].errors['required']" class="text-danger text-center">
+                  Email is required !
+              </div>
+          </div>
+          </div>
+          <div class="formRow">
+            <label class="label" for="password">Password</label>
+            <div class="position-relative">
+              <input [type]="passwordVisible ? 'text' : 'password'" class="form-control" placeholder="Password..." formControlName="password" class="hasEyeIcon" />
+              <button type="button" class="eyeBtn" (click)="togglePasswordVisibility()">
+                <i [ngClass]="passwordVisible ? 'bi bi-eye-slash' : 'bi bi-eye'"></i>
+              </button>
+            </div>            
+            <div *ngIf="submitted && f['password'].errors && !( f['email'].errors)" class=" text-left">
+              <div *ngIf="f['password'].errors['required']" class="text-danger text-center">
+                  Password is required !
+              </div>
+              <!-- <div *ngIf="f['password'].errors.minlength" class="text-danger text-center">
+                  Password must be at least 6 characters.
+              </div> -->
+          </div>
+            <!-- <span class="forgetPassword">Forget Password ?</span> -->
+          </div>
+          <button class="primaryBtn loginBtn" (click)="login()">Sign In</button>
+          <div class="haveAccount">
+            <div *ngIf="submitted && f['email'].errors &&f['password'].errors" class=" text-left">
+              <div *ngIf="f['email'].errors['required']" class="text-danger text-center">
+                  Please enter email and password
+              </div>
+          </div>
+            <!-- <button>Don't have a account ?</button> -->
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+  

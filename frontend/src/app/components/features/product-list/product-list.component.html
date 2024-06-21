@@ -1,0 +1,55 @@
+<mat-toolbar color="primary">
+  <span>Product List</span>
+</mat-toolbar>
+<mat-card>
+  <mat-card-header>
+    <button mat-raised-button (click)="addProduct()" color="primary" routerLink="/create-product"
+      style="margin-left: auto;">
+      Add Product
+    </button>
+  </mat-card-header>
+  <mat-card-content>
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Name </th>
+        <td mat-cell *matCellDef="let product"> {{product.name}} </td>
+      </ng-container>
+      <ng-container matColumnDef="price">
+        <th mat-header-cell *matHeaderCellDef> Price </th>
+        <td mat-cell *matCellDef="let product"> {{product.price}} </td>
+      </ng-container>
+      <ng-container matColumnDef="discount">
+        <th mat-header-cell *matHeaderCellDef> Discount </th>
+        <td mat-cell *matCellDef="let product"> {{product.discount}} </td>
+      </ng-container>
+      <ng-container matColumnDef="categoryName">
+        <th mat-header-cell *matHeaderCellDef> Category </th>
+        <td mat-cell *matCellDef="let product"> {{product.categoryName}} </td>
+      </ng-container>
+      <ng-container matColumnDef="size">
+        <th mat-header-cell *matHeaderCellDef> Size </th>
+        <td mat-cell *matCellDef="let product"> {{product.size}} </td>
+      </ng-container>
+      <ng-container matColumnDef="vendorName">
+        <th mat-header-cell *matHeaderCellDef> Vendor </th>
+        <td mat-cell *matCellDef="let product"> {{product.venderName}} </td>
+      </ng-container>
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef> Actions </th>
+        <td mat-cell *matCellDef="let product">
+          <button mat-icon-button color="primary" (click)="editProduct(product)">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button color="warn" (click)="deleteProduct(product)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    <mat-paginator [length]="totalDocuments"  [pageSize]="10"   (page)="getPage($event)" [pageSizeOptions]="[1,5, 10, 20]">
+    </mat-paginator>
+  </mat-card-content>
+</mat-card>

@@ -1,0 +1,21 @@
+<app-header (dataEvent)="receiveData($event)"></app-header>
+
+<div
+  class="pageLayout"
+  [ngClass]="{ 'half-show-sidebar isText': isHalfShown }"
+  (onClick)="getValue()"
+>
+  <!-- sidebar -->
+  <aside class="sidebar">
+    <div bg-light></div>
+    <app-nav [toggle]="toggle"></app-nav>
+  </aside>
+
+  <!-- main wrapper -->
+  <section class="right-section">
+    <section class="main">
+        <router-outlet></router-outlet>
+      <!-- <app-user-mangement-list></app-user-mangement-list> -->
+    </section>
+  </section>
+</div>
